@@ -64,27 +64,23 @@ export default class Chat extends React.Component {
   }
   // defines the bubble
   renderBubble(props) {
-    console.warn(props);
+
     currentMessage = props.currentMessage
-    let sameUser;
+    let showUsername = true;
+
     if (currentMessage.previousMessage.user != null){
       if (currentMessage.previousMessage.user._id == currentMessage.user._id){
-        sameUser = true;
+        showUsername = false;
       }
-      else{
-        sameUser = false;
+      if (currentMessage.user._id == this.state.userId){
+        showUsername = false;
       }
-    }
-    else{
-      sameUser = true
     }
     // console.error(sameUser);
     // let hi = "hello world"
     return (
       <View>
-          {/* {console.warn(sameUser)} */}
-        <Text style={styles.nameTag}>{String(sameUser)}</Text>   
-       {props.sameUser > 0 && <Text style={styles.nameTag}>{currentMessage.user.name}</Text>}
+       {showUsername > 0 && <Text style={styles.nameTag}>{currentMessage.user.name}</Text>}
 
       <Bubble
         {...props}
