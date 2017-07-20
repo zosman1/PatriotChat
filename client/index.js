@@ -35,7 +35,7 @@ export default class Main extends Component {
           Cmd+D or shake for dev menu
         </Text>
         <Button
-          title='Change page'
+          title='To Chat>'
           onPress={() => {
             navigate('Chat', {username:'user', chatId: 1 })
           }}

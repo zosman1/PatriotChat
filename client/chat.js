@@ -4,7 +4,7 @@ import SocketIOClient from 'socket.io-client';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 
 const USER_ID = '@userId';
-const SERVER_IP = `localhost`;
+const SERVER_IP = `10.0.0.19`;
 
 
 
@@ -64,13 +64,28 @@ export default class Chat extends React.Component {
   }
   // defines the bubble
   renderBubble(props) {
-    // console.warn("BREAK ");
-    // console.warn(props);
-    // console.warn("BREAK ");
-    // console.warn(props.currentMessage.user.name);
+    console.warn(props);
+    currentMessage = props.currentMessage
+    let sameUser;
+    if (currentMessage.previousMessage.user != null){
+      if (currentMessage.previousMessage.user._id == currentMessage.user._id){
+        sameUser = true;
+      }
+      else{
+        sameUser = false;
+      }
+    }
+    else{
+      sameUser = true
+    }
+    // console.error(sameUser);
+    // let hi = "hello world"
     return (
       <View>
-      <Text style={styles.nameTag}>{props.currentMessage.user.name}</Text>
+          {/* {console.warn(sameUser)} */}
+        <Text style={styles.nameTag}>{String(sameUser)}</Text>   
+       {props.sameUser > 0 && <Text style={styles.nameTag}>{currentMessage.user.name}</Text>}
+
       <Bubble
         {...props}
         wrapperStyle={{
