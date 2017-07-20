@@ -72,12 +72,11 @@ export default class Chat extends React.Component {
       if (currentMessage.previousMessage.user._id == currentMessage.user._id){
         showUsername = false;
       }
-      if (currentMessage.user._id == this.state.userId){
-        showUsername = false;
-      }
     }
-    // console.error(sameUser);
-    // let hi = "hello world"
+    if (currentMessage.user._id == this.state.userId){
+       showUsername = false;
+    }
+      
     return (
       <View>
        {showUsername > 0 && <Text style={styles.nameTag}>{currentMessage.user.name}</Text>}
