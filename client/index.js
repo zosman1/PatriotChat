@@ -25,7 +25,7 @@ export default class Main extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to PatriotChat!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: '#006633'
   },
   instructions: {
     textAlign: 'center',
