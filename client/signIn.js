@@ -26,6 +26,18 @@ export default class SignIn extends Component {
         'eyad-dhaynes': {
           id: 3,
           name: 'some third thing'
+        },
+        'zoz-eyad2': {
+          id: 4,
+          name: 'Patriot Chat Development2'
+        },
+        'zoz-dhaynes2': {
+          id: 5,
+          name: 'some other thing2'
+        },
+        'eyad-dhaynes2': {
+          id: 6,
+          name: 'some third thing2'
         }
       }
     }

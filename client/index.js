@@ -4,10 +4,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   AsyncStorage,
+  ScrollView,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import Button from 'react-native-button';
+
 // Import other pages:
 import Chat from './chat'
 import SignIn from './signIn'
@@ -42,41 +44,27 @@ export default class Main extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-         <Text style={styles.welcome}>
-          Welcome to PatriotChat!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text> 
-
+      <ScrollView style={styles.container}>
         {
           (this.state.user != null) > 0 &&
           Object.keys(this.state.user.chats).map((key, index) => {
             let chat = this.state.user.chats[key]
             return (
-              <Button
-              title={chat.name}
-              onPress={() => {
-                navigate('Chat', {user:this.state.user, chat: chat})
-              }}
-              style={styles.chat}
-              />
+                <Button
+                  onPress={() => {
+                    navigate('Chat', {user:this.state.user, chat: chat})
+                  }}
+                  style={{color: 'white'}}
+                  containerStyle={{margin: 1, padding:10, height:70, overflow:'hidden', backgroundColor: '#006633'}}
+                >
+
+                <Text style={styles.chatTag}> {chat.name} </Text>
+                
+                </Button>
             );
           })
         }
-
-        {/* <Button
-          title='To Chat>'
-          onPress={() => {
-            navigate('Chat', {user:this.state.user, chatId: this.state.user.chats['zoz-eyad'].id})
-          }}
-        /> */}
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -90,9 +78,9 @@ const App = StackNavigator({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -106,8 +94,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   chat: {
-    color: '#FFCC33'
+    backgroundColor: '#006633',
+    // margin: 10,
+    height: 70,
+    margin: 0.5,
+    // justifyContent: 'flex-end',
   },
+  chatTag: {
+    color: 'white',
+  }
 });
 
 AppRegistry.registerComponent('PatriotChat', () => App);
