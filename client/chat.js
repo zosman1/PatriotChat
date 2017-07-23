@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 export default class Chat extends React.Component {
   // Nav options can be defined as a function of the screen's props:
   static navigationOptions = ({ navigation }) => ({
-    title: `ChatId: ${navigation.state.params.chatId}`,
+    title: `ChatId: ${navigation.state.params.chat.id}`,
   });
   constructor(props) {
     super(props);
@@ -45,7 +45,7 @@ export default class Chat extends React.Component {
    * Set the userId to the component's state.
    */
   determineUser() {
-    this.socket.emit('defChatId', this.props.navigation.state.params.chatId)
+    this.socket.emit('defChatId', this.props.navigation.state.params.chat.id)
     AsyncStorage.getItem(USER_ID)
       .then((userId) => {
         // If there isn't a stored userId, then fetch one from the server.
@@ -111,7 +111,7 @@ export default class Chat extends React.Component {
   onSend(messages=[]) {
     console.warn(this.props.navigation.state.params.user);
     messages[0].user.name = this.props.navigation.state.params.user.username;
-    this.socket.emit('defChatId', this.props.navigation.state.params.chatId)
+    this.socket.emit('defChatId', this.props.navigation.state.params.chat.id)
     // console.warn(this.props)
     this.socket.emit('message', messages[0]);
     this._storeMessages(messages);

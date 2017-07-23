@@ -33,8 +33,8 @@ export default class Main extends Component {
         this.props.navigation.navigate('SignIn');
       }
       else {
-        this.setState({user: JSON.parse(user)})
-        console.warn(this.state.user);
+        this.setState({user: JSON.parse(user)});
+        // console.warn(this.state.user);
       }
     });
   }
@@ -54,12 +54,28 @@ export default class Main extends Component {
           Cmd+D or shake for dev menu
         </Text> 
 
-        <Button
+        {
+          (this.state.user != null) > 0 &&
+          Object.keys(this.state.user.chats).map((key, index) => {
+            let chat = this.state.user.chats[key]
+            return (
+              <Button
+              title={chat.name}
+              onPress={() => {
+                navigate('Chat', {user:this.state.user, chat: chat})
+              }}
+              style={styles.chat}
+              />
+            );
+          })
+        }
+
+        {/* <Button
           title='To Chat>'
           onPress={() => {
             navigate('Chat', {user:this.state.user, chatId: this.state.user.chats['zoz-eyad'].id})
           }}
-        />
+        /> */}
       </View>
     );
   }
@@ -88,6 +104,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  chat: {
+    color: '#FFCC33'
   },
 });
 
