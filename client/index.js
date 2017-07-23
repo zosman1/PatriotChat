@@ -8,6 +8,7 @@ import {
   AsyncStorage,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+// Import other pages:
 import Chat from './chat'
 import SignIn from './signIn'
 
@@ -25,21 +26,24 @@ export default class Main extends Component {
 
   // on first dom render check if user is set; if not: navigate to login page
   componentDidMount() {
+    // console.warn()
+    // AsyncStorage.clear();
     AsyncStorage.getItem('user').then((user) => { 
       if (user == null) {
         this.props.navigation.navigate('SignIn');
       }
       else {
         this.setState({user: JSON.parse(user)})
+        console.warn(this.state.user);
       }
-    })
+    });
   }
 
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        {/* <Text style={styles.welcome}>
+         <Text style={styles.welcome}>
           Welcome to PatriotChat!
         </Text>
         <Text style={styles.instructions}>
@@ -48,12 +52,12 @@ export default class Main extends Component {
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
-        </Text> */}
+        </Text> 
 
         <Button
           title='To Chat>'
           onPress={() => {
-            navigate('Chat', {username:'user', chatId: 1 })
+            navigate('Chat', {user:this.state.user, chatId: this.state.user.chats['zoz-eyad'].id})
           }}
         />
       </View>
@@ -69,10 +73,10 @@ const App = StackNavigator({
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,

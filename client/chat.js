@@ -109,8 +109,8 @@ export default class Chat extends React.Component {
    * and store it in this component's state.
    */
   onSend(messages=[]) {
-    // console.warn(messages).
-    messages[0].user.name = this.props.navigation.state.params.username;
+    console.warn(this.props.navigation.state.params.user);
+    messages[0].user.name = this.props.navigation.state.params.user.username;
     this.socket.emit('defChatId', this.props.navigation.state.params.chatId)
     // console.warn(this.props)
     this.socket.emit('message', messages[0]);
@@ -118,7 +118,7 @@ export default class Chat extends React.Component {
   }
 
   render() {
-    var user = { _id: this.state.userId || -1 };
+    let user = { _id: this.state.userId || -1 };
 
     return (
       <GiftedChat
