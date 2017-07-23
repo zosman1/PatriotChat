@@ -100,8 +100,16 @@ export default class Chat extends React.Component {
   /**
    * When the server sends a message to this.
    */
-  onReceivedMessage(messages) {
-    this._storeMessages(messages);
+  onReceivedMessage(inMessages) {
+    // console.warn(messages);
+    let outMessages = []
+    inMessages.forEach((message) => {
+      if (message.chatId == this.props.navigation.state.params.chat.id){
+        outMessages.push(message);
+      }
+    });
+
+    this._storeMessages(outMessages);
   }
 
   /**
@@ -109,7 +117,7 @@ export default class Chat extends React.Component {
    * and store it in this component's state.
    */
   onSend(messages=[]) {
-    console.warn(this.props.navigation.state.params.user);
+    // console.warn(this.props.navigation.state.params.user);
     messages[0].user.name = this.props.navigation.state.params.user.username;
     this.socket.emit('defChatId', this.props.navigation.state.params.chat.id)
     // console.warn(this.props)

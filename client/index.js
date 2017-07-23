@@ -58,7 +58,7 @@ export default class Main extends Component {
                   containerStyle={{margin: 1, padding:10, height:70, overflow:'hidden', backgroundColor: '#006633'}}
                 >
 
-                <Text style={styles.chatTag}> {chat.name} </Text>
+                <Text style={styles.chatTag}> {chat.name} ❯ </Text>
                 
                 </Button>
             );
