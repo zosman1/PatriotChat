@@ -1,7 +1,7 @@
 # PatriotChat
 
 ## Setup
-Node is required for the following [install instructions](https://nodejs.org/en/download/)
+Node is required for the following: [install instructions](https://nodejs.org/en/download/)
 
 ### Installing Yarn
 Install yarn [here](https://yarnpkg.com/lang/en/docs/install/)
@@ -32,7 +32,7 @@ Install the android SDK [here](http://www.androidauthority.com/how-to-install-an
 
 #### Developing on your Android
 
-You must have usb debugging enabled, here is [how](https://www.kingoapp.com/root-tutorials/how-to-enable-usb-debugging-mode-on-android.htm)
+You must have usb debugging enabled, [here is how](https://www.kingoapp.com/root-tutorials/how-to-enable-usb-debugging-mode-on-android.htm)
 
 running `adb devices` will show all connected android devices and will show if your device is showing up on your computer
 
