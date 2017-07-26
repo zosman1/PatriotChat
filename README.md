@@ -22,7 +22,7 @@ This command starts the local ios simulator and starts the react packager
 * Connect your IOS device
 * Select your device from the list of target devices in the top bar
 * Press the run button
-* Wait for the simulator to start up
+* Wait for the app to build and install onto your iPhone
 * You are ready to develop!
 
 ### Android
