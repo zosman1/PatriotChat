@@ -26,8 +26,8 @@ export default class Main extends Component {
     title: 'Groups',
   };
 
-  // on first dom render check if user is set; if not: navigate to login page
-  componentDidMount() {
+  // before first dom render check if user is set; if not: navigate to login page
+  componentWillMount() {
     // console.warn()
     // AsyncStorage.clear();
     AsyncStorage.getItem('user').then((user) => { 
