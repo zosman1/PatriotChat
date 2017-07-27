@@ -27,7 +27,7 @@ export default class Chat extends React.Component {
       userId: null
     };
 
-    this.determineUser = this.determineUser.bind(this);
+    // this.determineUser = this.determineUser.bind(this);
     this.onReceivedMessage = this.onReceivedMessage.bind(this);
     this.onSend = this.onSend.bind(this);
     this.renderBubble = this.renderBubble.bind(this);
@@ -35,8 +35,11 @@ export default class Chat extends React.Component {
 
     // replace the ip with your servers local ip
     this.socket = SocketIOClient(`http://${SERVER_IP}:3030`);
-    this.socket.on('message', this.onReceivedMessage);
-    this.determineUser();
+    this.socket.on('add-message', this.onReceivedMessage);
+    // this.determineUser();
+  }
+  componentWillMount() {
+    this.socket.emit("add-user", {"netid": this.props.navigation.state.params.user.netid});
   }
 
   /**
@@ -44,24 +47,24 @@ export default class Chat extends React.Component {
    * If they aren't, then ask the server for a userId.
    * Set the userId to the component's state.
    */
-  determineUser() {
-    this.socket.emit('defChatId', this.props.navigation.state.params.chat.id)
-    AsyncStorage.getItem(USER_ID)
-      .then((userId) => {
-        // If there isn't a stored userId, then fetch one from the server.
-        if (!userId) {
-          this.socket.emit('userJoined', null);
-          this.socket.on('userJoined', (userId) => {
-            AsyncStorage.setItem(USER_ID, userId);
-            this.setState({ userId });
-          });
-        } else {
-          this.socket.emit('userJoined', userId);
-          this.setState({ userId });
-        }
-      })
-      .catch((e) => alert(e));
-  }
+  // determineUser() {
+  //   this.socket.emit('defChatId', this.props.navigation.state.params.chat.id)
+  //   AsyncStorage.getItem(USER_ID)
+  //     .then((userId) => {
+  //       // If there isn't a stored userId, then fetch one from the server.
+  //       if (!userId) {
+  //         this.socket.emit('userJoined', null);
+  //         this.socket.on('userJoined', (userId) => {
+  //           AsyncStorage.setItem(USER_ID, userId);
+  //           this.setState({ userId });
+  //         });
+  //       } else {
+  //         this.socket.emit('userJoined', userId);
+  //         this.setState({ userId });
+  //       }
+  //     })
+  //     .catch((e) => alert(e));
+  // }
   // defines the bubble
   renderBubble(props) {
 
@@ -100,16 +103,18 @@ export default class Chat extends React.Component {
   /**
    * When the server sends a message to this.
    */
-  onReceivedMessage(inMessages) {
+  onReceivedMessage(messages) {
     // console.warn(messages);
-    let outMessages = []
-    inMessages.forEach((message) => {
-      if (message.chatId == this.props.navigation.state.params.chat.id){
-        outMessages.push(message);
-      }
-    });
+    // let outMessages = []
+    // inMessages.forEach((message) => {
+    //   if (message.chatId == this.props.navigation.state.params.chat.id){
+    //     outMessages.push(message);
+    //   }
+    // });
+    console.warn('recived message:')
+    console.warn(messages);
 
-    this._storeMessages(outMessages);
+    this._storeMessages(messages);
   }
 
   /**
@@ -117,14 +122,11 @@ export default class Chat extends React.Component {
    * and store it in this component's state.
    */
   onSend(messages=[]) {
-    // console.warn(this.props.navigation.state.params.user);
-    messages[0].user.name = this.props.navigation.state.params.user.username;
-    this.socket.emit('defChatId', this.props.navigation.state.params.chat.id)
-    // console.warn(this.props)
-    this.socket.emit('message', messages[0]);
+    messages[0].destination = this.props.navigation.state.params.user.netid;
+    this.socket.emit('private-message', messages[0], this.props.navigation.state.params.user);
     this._storeMessages(messages);
   }
-
+  
   render() {
     let user = { _id: this.state.userId || -1 };
 

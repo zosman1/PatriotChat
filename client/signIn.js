@@ -17,7 +17,8 @@ export default class SignIn extends Component {
       chats: {
         'zoz-eyad': {
           id: 1,
-          name: 'Patriot Chat Development'
+          name: 'Patriot Chat Development',
+          destination: 'eyad'
         },
         'zoz-dhaynes': {
           id: 2,
