@@ -1,25 +1,26 @@
 
-var express = require('express');
-var http = require('http')
-var socketio = require('socket.io');
-var mongojs = require('mongojs');
+const express = require('express');
+const http = require('http')
+const socketio = require('socket.io');
+const mongojs = require('mongojs');
 
-var ObjectID = mongojs.ObjectID;
-var db = mongojs(process.env.MONGO_URL || 'mongodb://localhost:27017/local');
-var app = express();
-var server = http.Server(app);
-var websocket = socketio(server);
+const ObjectID = mongojs.ObjectID;
+const db = mongojs(process.env.MONGO_URL || 'mongodb://localhost:27017/local');
+const app = express();
+const server = http.Server(app);
+const websocket = socketio(server);
 server.listen(3030, () => console.log('listening on *:3030'));
 
 // Mapping objects to easily map sockets and users.
-var clients = {};
-var users = {};
+let clients = {};
+let users = {};
 
 // This represents a unique chatroom.
 // For this example purpose, there is only one chatroom;
-var chatId = 1;
+let chatId = 1;
 
 websocket.on('connection', (socket) => {
+    console.log("New Connection");
     clients[socket.id] = socket;
     socket.on('userJoined', (userId) => onUserJoined(userId, socket));
     socket.on('message', (message) => onMessageReceived(message, socket));
@@ -83,12 +84,12 @@ function _sendAndSaveMessage(message, socket, fromServer) {
   });
 }
 
-// Allow the server to participate in the chatroom through stdin.
-var stdin = process.openStdin();
-stdin.addListener('data', function(d) {
-  _sendAndSaveMessage({
-    text: d.toString().trim(),
-    createdAt: new Date(),
-    user: { _id: 'robot' }
-  }, null /* no socket */, true /* send from server */);
-});
+// // Allow the server to participate in the chatroom through stdin.
+// var stdin = process.openStdin();
+// stdin.addListener('data', function(d) {
+//   _sendAndSaveMessage({
+//     text: d.toString().trim(),
+//     createdAt: new Date(),
+//     user: { _id: 'robot' }
+//   }, null /* no socket */, true /* send from server */);
+// });
