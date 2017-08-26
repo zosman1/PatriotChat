@@ -18,27 +18,32 @@ export default class SignIn extends Component {
         'zoz-eyad': {
           id: 1,
           name: 'Patriot Chat Development',
-          destination: 'eyad'
+          participants: ['zoz', 'eyad']
         },
         'zoz-dhaynes': {
           id: 2,
-          name: 'some other thing'
+          name: 'some other thing',
+          participants: ['zoz', 'dhaynes']
         },
         'eyad-dhaynes': {
           id: 3,
-          name: 'some third thing'
+          name: 'some third thing',
+          participants: ['eyad', 'dhaynes']
         },
         'zoz-eyad2': {
           id: 4,
-          name: 'Patriot Chat Development2'
+          name: 'Patriot Chat Development2',
+          participants: ['zoz', 'eyad2']
         },
         'zoz-dhaynes2': {
           id: 5,
-          name: 'some other thing2'
+          name: 'some other thing2',
+          participants: ['zoz', 'dhaynes2']
         },
         'eyad-dhaynes2': {
           id: 6,
-          name: 'some third thing2'
+          name: 'some third thing2',
+          participants: ['eyad', 'dhaynes2']
         }
       }
     }
