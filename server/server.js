@@ -19,33 +19,36 @@ function handler (req, res) {
   });
 }
 
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', (socket) => {
 
-  socket.on('add-user', function(data){
-    clients[data.netid] = {
-      "socket": socket.id
-    };
-  });
-
-  socket.on('private-message', function(message, user){
-    console.log("Sending: " + message.text);
-    console.warn(clients);
-    if (clients[message.destination]){
-      io.sockets.connected[clients[message.destination].socket].emit("add-message", message);
-    } else {
-      console.log("User does not exist: " + user.netid); 
-    }
-  });
-
-  //Removing the socket on disconnect
-  socket.on('disconnect', function() {
-  	for(var name in clients) {
-  		if(clients[name].socket === socket.id) {
-  			delete clients[name];
-  			break;
-  		}
-  	}	
-  })
+  socket.on('add-user', addUser(data, socket));
+  socket.on('private-message', privateMessage(message, socket));
+  socket.on('disconnect', disconnect(data, socket));
 
 });
 
+function addUser(data, socket){
+  clients[data.netid] = {
+    "socket": socket.id
+  };
+}
+
+function privateMessage(message, socket){
+  console.log("Sending: " + message.text);
+  console.warn(clients);
+  if (clients[message.destination]){
+    io.sockets.connected[clients[message.destination].socket].emit("add-message", message);
+  } else {
+    console.log("User does not exist: " + user.netid); 
+  }
+}
+
+//Removing the socket on disconnect
+function disconnect(data, socket){
+  for(var name in clients) {
+    if(clients[name].socket === socket.id) {
+      delete clients[name];
+      break;
+    }
+  }	
+}
