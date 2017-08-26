@@ -2,7 +2,7 @@ const app = require('http').createServer(handler)
 const io = require('socket.io').listen(app)
 const fs = require('fs')
 
-app.listen(3030);
+app.listen(3030,() => console.log('listening on *:3030'));
 
 var clients = {};
 
@@ -21,9 +21,9 @@ function handler (req, res) {
 
 io.sockets.on('connection', (socket) => {
 
-  socket.on('add-user', addUser(data, socket));
-  socket.on('private-message', privateMessage(message, socket));
-  socket.on('disconnect', disconnect(data, socket));
+  socket.on('add-user', (data) => addUser(data, socket));
+  socket.on('private-message', (message) => privateMessage(message, socket));
+  socket.on('disconnect', (data) => disconnect(data, socket));
 
 });
 
