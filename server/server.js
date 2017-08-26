@@ -1,4 +1,3 @@
-
 const express = require('express');
 const http = require('http')
 const socketio = require('socket.io');
@@ -24,8 +23,16 @@ websocket.on('connection', (socket) => {
     clients[socket.id] = socket;
     socket.on('userJoined', (userId) => onUserJoined(userId, socket));
     socket.on('message', (message) => onMessageReceived(message, socket));
+    socket.on('defChatId', (chatId) => defChatId(chatId, socket));
+    
 });
 
+
+function defChatId(Id, socket){
+  //Defines the current server chatId
+  console.log(`switching from chatid: ${chatId} to ${Id}`); 
+  chatId = Id;
+}
 // Event listeners.
 // When a user joins the chatroom.
 function onUserJoined(userId, socket) {
