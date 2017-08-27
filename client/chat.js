@@ -122,6 +122,8 @@ export default class Chat extends React.Component {
    * and store it in this component's state.
    */
   onSend(messages=[]) {
+    // console.warn(messages[0]);
+    messages[0].sender = this.props.navigation.state.params.user.netid;
     messages[0].destinations = this.props.navigation.state.params.chat.participants;
     // console.warn("destination: " + this.props.navigation.state.params.chat.participants);
     this.socket.emit('private-message', messages[0], this.props.navigation.state.params.user);

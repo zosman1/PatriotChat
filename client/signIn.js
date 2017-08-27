@@ -12,7 +12,7 @@ export default class SignIn extends Component {
       firstName: 'John',
       lastName: 'Doe',
       email: 'jdoe5@gmu.edu',
-      netid: 'jdoe',
+      netid: 'zoz',
       Gnumber: '00000000',
       chats: {
         'zoz-eyad': {

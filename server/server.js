@@ -35,18 +35,26 @@ function addUser(data, socket){
 
 function privateMessage(message, socket){
   console.log("Sending: " + message.text);
-  console.warn(clients);
+  console.warn("clients :" + JSON.stringify(clients));
   console.warn(message.destinations);
   message.destinations.forEach((client) => {
-    //for each user id do something... 
-    console.warn(client);
     
+    //making sure we don't send to the sender
+    if (client == message.sender) return;
+
+    if (clients[client]){
+      console.warn(client);
+      io.sockets.connected[clients[client].socket].emit("add-message", message);
+    } else {
+      console.warn("user not defined!");
+      // send that user a push notification
+    }
   });
-  if (clients[message.destination]){
-    io.sockets.connected[clients[message.destination].socket].emit("add-message", message);
-  } else {
-    // console.log("User does not exist: " + user.netid);
-  }
+  // if (clients[message.destination]){
+  //   io.sockets.connected[clients[message.destination].socket].emit("add-message", message);
+  // } else {
+  //   // console.log("User does not exist: " + user.netid);
+  // }
 }
 
 //Removing the socket on disconnect
