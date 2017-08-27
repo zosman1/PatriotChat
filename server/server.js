@@ -36,10 +36,16 @@ function addUser(data, socket){
 function privateMessage(message, socket){
   console.log("Sending: " + message.text);
   console.warn(clients);
+  console.warn(message.destinations);
+  message.destinations.forEach((client) => {
+    //for each user id do something... 
+    console.warn(client);
+    
+  });
   if (clients[message.destination]){
     io.sockets.connected[clients[message.destination].socket].emit("add-message", message);
   } else {
-    console.log("User does not exist: " + user.netid); 
+    // console.log("User does not exist: " + user.netid);
   }
 }
 
