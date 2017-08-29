@@ -35,10 +35,10 @@ function addUser(data, socket){
 
 function privateMessage(message, socket){
   console.log("Sending: " + message.text);
-  console.warn("clients :" + JSON.stringify(clients));
+  console.warn("clients: " + JSON.stringify(clients));
   console.warn(message.destinations);
   message.destinations.forEach((client) => {
-    
+
     //making sure we don't send to the sender
     if (client == message.sender) return;
 
