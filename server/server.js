@@ -20,6 +20,7 @@ function handler (req, res) {
 }
 
 io.sockets.on('connection', (socket) => {
+  console.log("User Joined")
 
   socket.on('add-user', (data) => addUser(data, socket));
   socket.on('private-message', (message) => privateMessage(message, socket));
@@ -28,6 +29,7 @@ io.sockets.on('connection', (socket) => {
 });
 
 function addUser(data, socket){
+  console.log("netId: " + data.netid);
   clients[data.netid] = {
     "socket": socket.id
   };

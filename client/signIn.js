@@ -16,7 +16,7 @@ export default class SignIn extends Component {
       Gnumber: '00000000',
       chats: {
         'zoz-eyad': {
-          id: 1,
+          id: 1, //Represents the ChatId
           name: 'Patriot Chat Development',
           participants: ['zoz', 'eyad']
         },
