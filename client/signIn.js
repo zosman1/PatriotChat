@@ -46,7 +46,7 @@ export default class SignIn extends Component {
           participants: ['zoz', 'dhaynes']
         }
       }
-    }
+    };
 
     let sampleusr2 = {
       netid: 'eyad',
@@ -62,7 +62,7 @@ export default class SignIn extends Component {
           participants: ['eyad', 'dhaynes']
         }
       }
-    }
+    };
     let sampleusr3 = {
       netid: 'dhaynes',
       chats: {
@@ -77,7 +77,7 @@ export default class SignIn extends Component {
           participants: ['eyad', 'dhaynes']
         }
       }
-    }
+    };
     return(
       <View>
         <Text>Signin</Text>
