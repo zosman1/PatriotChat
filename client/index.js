@@ -55,7 +55,6 @@ export default class Main extends Component {
       //fetch chats from server
       this.socket.emit('fetch-chats');
       this.socket.on('fetch-chats', (chats) => {
-        console.warn("chats fetched;")
         AsyncStorage.setItem('chats', JSON.stringify(chats));
         this.setState({chats: chats});
       })
