@@ -1,54 +1,73 @@
-const app = require('http').createServer(handler)
-const io = require('socket.io').listen(app)
-const fs = require('fs')
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var port = process.env.PORT || 3030;
 
-app.listen(3030,() => console.log('listening on *:3030'));
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+http.listen(port, function(){
+  console.log('listening on *:' + port);
+});
 
 var clients = {};
 
-function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
 
-    res.writeHead(200);
-    res.end(data);
-  });
-}
+io.on('connection', (socket) => {
+  console.log("User Connected - Socket: " + socket.id);
 
-io.sockets.on('connection', (socket) => {
-  console.log("User Joined")
-
+  socket.on('fetch-chats', () => fetchChats(socket));  
   socket.on('add-user', (data) => addUser(data, socket));
   socket.on('private-message', (message) => privateMessage(message, socket));
   socket.on('disconnect', (data) => disconnect(data, socket));
-
 });
+
+function fetchChats(socket){
+  // console.log(socket);
+  //return chats as an object;
+  let payload =  {
+    'zoz-eyad': {
+      id: 1, //Represents the ChatId
+      name: 'Patriot Chat Development',
+      participants: ['zoz', 'eyad']
+    },
+    'zoz-dhaynes': {
+      id: 2,
+      name: 'some other thing',
+      participants: ['zoz', 'dhaynes']
+    },
+    'eyad-dhaynes': {
+      id: 3,
+      name: 'some third thing',
+      participants: ['eyad', 'dhaynes']
+    }
+  };
+
+  io.to(socket.id).emit('fetch-chats', payload);
+}
 
 function addUser(data, socket){
   console.log("netId: " + data.netid);
   clients[data.netid] = {
-    "socket": socket.id
+    socket: socket.id
   };
 }
 
 function privateMessage(message, socket){
   console.log("Sending: " + message.text);
-  console.warn("clients: " + JSON.stringify(clients));
-  console.warn(message.destinations);
+  console.log("clients: " + JSON.stringify(clients));
+  console.log(message.destinations);
   message.destinations.forEach((client) => {
 
     //making sure we don't send to the sender
     if (client == message.sender) return;
 
     if (clients[client]){
-      console.warn(client);
-      io.sockets.connected[clients[client].socket].emit("add-message", message);
+      console.log(client);
+      io.connected[clients[client].socket].emit("add-message", message);
     } else {
-      console.warn("user not defined!");
+      console.log("user not defined!");
       // send that user a push notification
     }
   });

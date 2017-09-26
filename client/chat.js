@@ -35,7 +35,7 @@ export default class Chat extends React.Component {
 
     // replace the ip with your servers local ip
     this.socket = SocketIOClient(`http://${SERVER_IP}:3030`);
-    this.socket.on('add-message', this.onReceivedMessage);
+    // this.socket.on('add-message', this.onReceivedMessage);
     // this.determineUser();
   }
   componentWillMount() {

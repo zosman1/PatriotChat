@@ -14,69 +14,69 @@ export default class SignIn extends Component {
     //   email: 'jdoe5@gmu.edu',
     //   netid: 'zoz',
     //   Gnumber: '00000000',
-    //   chats: {
-    //     'zoz-eyad': {
-    //       id: 1, //Represents the ChatId
-    //       name: 'Patriot Chat Development',
-    //       participants: ['zoz', 'eyad']
-    //     },
-    //     'zoz-dhaynes': {
-    //       id: 2,
-    //       name: 'some other thing',
-    //       participants: ['zoz', 'dhaynes']
-    //     },
-    //     'eyad-dhaynes': {
-    //       id: 3,
-    //       name: 'some third thing',
-    //       participants: ['eyad', 'dhaynes']
-    //     }
-    //   }
+      // chats: {
+      //   'zoz-eyad': {
+      //     id: 1, //Represents the ChatId
+      //     name: 'Patriot Chat Development',
+      //     participants: ['zoz', 'eyad']
+      //   },
+      //   'zoz-dhaynes': {
+      //     id: 2,
+      //     name: 'some other thing',
+      //     participants: ['zoz', 'dhaynes']
+      //   },
+      //   'eyad-dhaynes': {
+      //     id: 3,
+      //     name: 'some third thing',
+      //     participants: ['eyad', 'dhaynes']
+      //   }
+      // }
     // }
     let sampleusr1 = {
       netid: 'zoz',
-      chats: {
-        'zoz-eyad': {
-          id: 1,
-          name: 'Patriot Chat Development',
-          participants: ['zoz', 'eyad']
-        },
-        'zoz-dhaynes': {
-          id: 2,
-          name: 'some other thing',
-          participants: ['zoz', 'dhaynes']
-        }
-      }
+      // chats: {
+      //   'zoz-eyad': {
+      //     id: 1,
+      //     name: 'Patriot Chat Development',
+      //     participants: ['zoz', 'eyad']
+      //   },
+      //   'zoz-dhaynes': {
+      //     id: 2,
+      //     name: 'some other thing',
+      //     participants: ['zoz', 'dhaynes']
+      //   }
+      // }
     };
 
     let sampleusr2 = {
       netid: 'eyad',
-      chats: {
-        'zoz-eyad': {
-          id: 1,
-          name: 'Patriot Chat Development',
-          participants: ['zoz', 'eyad']
-        },
-        'eyad-dhaynes': {
-          id: 3,
-          name: 'some third thing',
-          participants: ['eyad', 'dhaynes']
-        }
-      }
+      // chats: {
+      //   'zoz-eyad': {
+      //     id: 1,
+      //     name: 'Patriot Chat Development',
+      //     participants: ['zoz', 'eyad']
+      //   },
+      //   'eyad-dhaynes': {
+      //     id: 3,
+      //     name: 'some third thing',
+      //     participants: ['eyad', 'dhaynes']
+      //   }
+      // }
     };
     let sampleusr3 = {
       netid: 'dhaynes',
-      chats: {
-        'zoz-dhaynes': {
-          id: 2,
-          name: 'some other thing',
-          participants: ['zoz', 'dhaynes']
-        },
-        'eyad-dhaynes': {
-          id: 3,
-          name: 'some third thing',
-          participants: ['eyad', 'dhaynes']
-        }
-      }
+      // chats: {
+      //   'zoz-dhaynes': {
+      //     id: 2,
+      //     name: 'some other thing',
+      //     participants: ['zoz', 'dhaynes']
+      //   },
+      //   'eyad-dhaynes': {
+      //     id: 3,
+      //     name: 'some third thing',
+      //     participants: ['eyad', 'dhaynes']
+      //   }
+      // }
     };
     return(
       <View>
