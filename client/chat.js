@@ -3,10 +3,6 @@ import { View, Text, AsyncStorage, StyleSheet } from 'react-native';
 import SocketIOClient from 'socket.io-client';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 
-const USER_ID = '@userId';
-const SERVER_IP = `10.0.0.19`;
-
-
 
 const styles = StyleSheet.create({
   nameTag: {
@@ -42,29 +38,6 @@ export default class Chat extends React.Component {
     this.socket.emit("add-user", {"netid": this.props.navigation.state.params.user.netid});
   }
 
-  /**
-   * When a user joins the chatroom, check if they are an existing user.
-   * If they aren't, then ask the server for a userId.
-   * Set the userId to the component's state.
-   */
-  // determineUser() {
-  //   this.socket.emit('defChatId', this.props.navigation.state.params.chat.id)
-  //   AsyncStorage.getItem(USER_ID)
-  //     .then((userId) => {
-  //       // If there isn't a stored userId, then fetch one from the server.
-  //       if (!userId) {
-  //         this.socket.emit('userJoined', null);
-  //         this.socket.on('userJoined', (userId) => {
-  //           AsyncStorage.setItem(USER_ID, userId);
-  //           this.setState({ userId });
-  //         });
-  //       } else {
-  //         this.socket.emit('userJoined', userId);
-  //         this.setState({ userId });
-  //       }
-  //     })
-  //     .catch((e) => alert(e));
-  // }
   // defines the bubble
   renderBubble(props) {
 
@@ -104,13 +77,7 @@ export default class Chat extends React.Component {
    * When the server sends a message to this.
    */
   onReceivedMessage(messages) {
-    // console.warn(messages);
-    // let outMessages = []
-    // inMessages.forEach((message) => {
-    //   if (message.chatId == this.props.navigation.state.params.chat.id){
-    //     outMessages.push(message);
-    //   }
-    // });
+
     console.warn('recived message:')
     console.warn(messages);
 
