@@ -71,7 +71,7 @@ export default class Main extends Component {
             return (
                 <Button
                   onPress={() => {
-                    navigate('Chat', {user:this.state.user, chat: chat})
+                    navigate('Chat', {user:this.state.user, chat: chat, socket: this.socket})
                   }}
                   style={{color: 'white'}}
                   containerStyle={{margin: 1, padding:10, height:70, overflow:'hidden', backgroundColor: '#006633'}}
