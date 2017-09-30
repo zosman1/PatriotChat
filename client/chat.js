@@ -20,7 +20,7 @@ export default class Chat extends React.Component {
     super(props);
     this.state = {
       messages: [],
-      userId: null
+      user: this.props.navigation.state.params.user
     };
 
     // this.determineUser = this.determineUser.bind(this);
@@ -35,7 +35,7 @@ export default class Chat extends React.Component {
     // this.determineUser();
   }
   componentWillMount() {
-    this.socket.emit("add-user", {"netid": this.props.navigation.state.params.user.netid});
+    this.socket.emit("add-user", {"netid": this.state.user.netid});
     // this.socket.on('fetch-chats', (chats) => {};
   }
 
@@ -51,7 +51,7 @@ export default class Chat extends React.Component {
         showUsername = false;
       }
     }
-    if (currentMessage.user._id == this.state.userId){
+    if (currentMessage.user._id == this.state.user.netid){
        showUsername = false;
     }
       
@@ -100,7 +100,7 @@ export default class Chat extends React.Component {
   }
   
   render() {
-    let user = { _id: this.state.userId || -1 };
+    let user = { _id: this.state.user.netid || -1 };
 
     return (
       <GiftedChat
