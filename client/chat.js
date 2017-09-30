@@ -100,7 +100,9 @@ export default class Chat extends React.Component {
   }
   
   render() {
-    let user = { _id: this.state.user.netid || -1 };
+    let user = { _id: this.state.user.netid || -1,
+       name:`${this.state.user.firstName}` `${this.state.user.lastName}`
+      };
 
     return (
       <GiftedChat

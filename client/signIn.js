@@ -34,6 +34,8 @@ export default class SignIn extends Component {
     // }
     let sampleusr1 = {
       netid: 'zoz',
+      firstName: 'zach',
+      lastName: 'hcaz'
       // chats: {
       //   'zoz-eyad': {
       //     id: 1,
@@ -50,6 +52,8 @@ export default class SignIn extends Component {
 
     let sampleusr2 = {
       netid: 'eyad',
+      firstName: 'eyad',
+      lastName: 'daye'
       // chats: {
       //   'zoz-eyad': {
       //     id: 1,
@@ -65,6 +69,8 @@ export default class SignIn extends Component {
     };
     let sampleusr3 = {
       netid: 'dhaynes',
+      fistName: 'david',
+      lastName: 'divad'
       // chats: {
       //   'zoz-dhaynes': {
       //     id: 2,
