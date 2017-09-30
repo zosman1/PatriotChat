@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', (data) => disconnect(data, socket));
 });
 
+//fetching chats(initiated from the user)
 function fetchChats(socket){
   // console.log(socket);
   //return chats as an object;
@@ -47,6 +48,7 @@ function fetchChats(socket){
   io.to(socket.id).emit('fetch-chats', payload);
 }
 
+//adding a user to the chatroom
 function addUser(data, socket){
   console.log("netId: " + data.netid);
   clients[data.netid] = {
@@ -54,6 +56,7 @@ function addUser(data, socket){
   };
 }
 
+//Sending a private message
 function privateMessage(message, socket){
   console.log("Sending: " + message.text);
   console.log("clients: " + JSON.stringify(clients));
