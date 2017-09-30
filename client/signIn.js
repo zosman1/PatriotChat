@@ -35,7 +35,8 @@ export default class SignIn extends Component {
     let sampleusr1 = {
       netid: 'zoz',
       firstName: 'zach',
-      lastName: 'hcaz'
+      lastName: 'hcaz',
+      username: 'zoz'
       // chats: {
       //   'zoz-eyad': {
       //     id: 1,
