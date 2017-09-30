@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -20,7 +20,7 @@ import SignIn from './signIn'
 const SERVER_IP = `10.0.0.6`;
 
 
-export default class Main extends Component {
+export default class Main extends React.Component {
   constructor(props){
     super(props);
     this.state = {

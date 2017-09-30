@@ -80,8 +80,8 @@ export default class Chat extends React.Component {
    */
   onReceivedMessage(messages) {
 
-    console.warn('recived message:')
-    console.warn(messages);
+    // console.warn('recived message:')
+    // console.warn(messages);
 
     this._storeMessages(messages);
   }
@@ -100,7 +100,8 @@ export default class Chat extends React.Component {
   }
   
   render() {
-    let user = { _id: this.state.user.netid || -1,
+    let user = { 
+      _id: this.state.user.netid || -1,
        name:`${this.state.user.firstName} ${this.state.user.lastName}`
       };
 
