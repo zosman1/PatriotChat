@@ -31,12 +31,14 @@ export default class Chat extends React.Component {
 
     // replace the ip with your servers local ip
     this.socket = this.props.navigation.state.params.socket;
-    // this.socket.on('add-message', this.onReceivedMessage);
+    this.socket.on('add-message', (message) => this.onReceivedMessage(message));
     // this.determineUser();
   }
   componentWillMount() {
     this.socket.emit("add-user", {"netid": this.props.navigation.state.params.user.netid});
+    // this.socket.on('fetch-chats', (chats) => {};
   }
+
 
   // defines the bubble
   renderBubble(props) {

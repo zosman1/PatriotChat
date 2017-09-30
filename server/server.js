@@ -58,7 +58,7 @@ function addUser(data, socket){
 
 //Sending a private message
 function privateMessage(message, socket){
-  console.log("Sending: " + message.text);
+  console.log(message.sender + " is Sending: " + message.text);
   console.log("clients: " + JSON.stringify(clients));
   console.log(message.destinations);
   message.destinations.forEach((client) => {
@@ -68,7 +68,7 @@ function privateMessage(message, socket){
 
     if (clients[client]){
       console.log(client);
-      io.connected[clients[client].socket].emit("add-message", message);
+      io.to(clients[client].socket).emit("add-message", message);      
     } else {
       console.log("user not defined!");
       // send that user a push notification
