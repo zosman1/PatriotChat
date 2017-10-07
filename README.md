@@ -1,8 +1,27 @@
 # PatriotChat
 
 ## Setup
-Node is required for the following: [install instructions](https://nodejs.org/en/download/)
 
+### Installing Node.js on macOS
+* First setup Homebrew by visiting [here](https://brew.sh)
+* Then run ```brew install node```
+
+### Installing Node.js on Windows
+#### First Option
+* Download the installer from [here](http://nodejs.org/#download)
+* You'll want to get v8.5.0 by clicking on other downloads under the 8.6.0 Current download button.
+
+#### Second Option
+* Use Chocolatey and do ```cinst nodejs.install```
+
+#### Third Option
+* Use scoop and do ```scoop install nodejs```
+
+### Installing Node.js on Linux
+#### Installing on Ubuntu or Debian based systems
+* Do ```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -```
+* Then ```sudo apt-get install -y nodejs```
+* Lastly do ```sudo apt-get install -y build-essential``` if you need build tools.
 ### Installing Yarn on macOS
 * First setup Homebrew by visting [here](https://brew.sh)
 * Run ```brew install yarn```
