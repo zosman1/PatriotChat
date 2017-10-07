@@ -22,6 +22,8 @@
 * Do ```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -```
 * Then ```sudo apt-get install -y nodejs```
 * Lastly do ```sudo apt-get install -y build-essential``` if you need build tools.
+
+#### For installing on other linux distrubtions please go [here](https://nodejs.org/en/download/package-manager/)
 ### Installing Yarn on macOS
 * First setup Homebrew by visting [here](https://brew.sh)
 * Run ```brew install yarn```
