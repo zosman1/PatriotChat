@@ -3,12 +3,14 @@
 ## Setup
 Node is required for the following: [install instructions](https://nodejs.org/en/download/)
 
-### Installing Yarn
-Install yarn [here](https://yarnpkg.com/lang/en/docs/install/)
+### Installing Yarn on macOS
+* First setup Homebrew by visting [here](https://brew.sh)
+* Run ```brew install yarn```
+* If you already have nvm/node.js then do ```brew install yarn --without-node```
 
 ## Development
 
-### IOS
+### iOS
 **Only supported on macOs**
 
 You must have Xcode Installed, this can be found in the mac app store
