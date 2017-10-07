@@ -1,14 +1,63 @@
 # PatriotChat
 
 ## Setup
-Node is required for the following: [install instructions](https://nodejs.org/en/download/)
 
-### Installing Yarn
-Install yarn [here](https://yarnpkg.com/lang/en/docs/install/)
+### Installing Node.js on macOS
+* First setup Homebrew by visiting [here](https://brew.sh)
+* Then run ```brew install node```
+
+### Installing Node.js on Windows
+#### First Option
+* Download the installer from [here](http://nodejs.org/#download)
+* You'll want to get v8.5.0 by clicking on other downloads under the 8.6.0 Current download button.
+
+#### Second Option
+* Use Chocolatey and do ```cinst nodejs.install```
+
+#### Third Option
+* Use scoop and do ```scoop install nodejs```
+
+### Installing Node.js on Linux
+#### Installing on Ubuntu or Debian based systems
+* Do ```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -```
+* Then ```sudo apt-get install -y nodejs```
+* Lastly do ```sudo apt-get install -y build-essential``` if you need build tools.
+
+#### For installing on other linux distrubtions please go [here](https://nodejs.org/en/download/package-manager/)
+### Installing Yarn on macOS
+* First setup Homebrew by visting [here](https://brew.sh)
+* Run ```brew install yarn```
+* If you already have nvm/node.js then do ```brew install yarn --without-node```
+
+
+### Installing Yarn on Windows
+You have 3 options for this:
+#### First Option
+* Download the installer
+* You will need to install node.js first for this.
+* Download the installer from [here](https://yarnpkg.com/latest.msi) and run it.
+
+#### Second Option
+* If you use chocolatey then do ```choco install yarn```
+Third Option
+* If you use scoop then do ```scoop install yarn```
+
+### Installing Yarn on Linux
+#### For Debian or Ubuntu you can install via Debian package repository.
+* First do: ```curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list```
+* Then do ```sudo apt-get update && sudo apt-get install yarn```
+* NOTE: If you get errors from `cmdtest` being installed then run `sudo apt remove cmdtest`
+
+#### For CentOS, Fedora, and RHEL, you can use the RPM package repo.
+* First do ```sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo```
+* Then you can do ```sudo yum install yarn``` or ```sudo dnf install yarn```
+
+#### For other distrubtions please see the yarn installation instructions [here](https://yarnpkg.com/lang/en/docs/install/#linux-tab)
 
 ## Development
 
-### IOS
+### iOS
 **Only supported on macOs**
 
 You must have Xcode Installed, this can be found in the mac app store
