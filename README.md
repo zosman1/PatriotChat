@@ -2,11 +2,17 @@
 
 ## Setup
 
-### Installing Node.js on macOS
+
+</details>
+
+<details>
+<summary>Installing NodeJs (skip this step if you already have it)</summary> 
+
+### macOs
 * First setup Homebrew by visiting [here](https://brew.sh)
 * Then run ```brew install node```
 
-### Installing Node.js on Windows
+### Windows
 #### First Option
 * Download the installer from [here](http://nodejs.org/#download)
 * You'll want to get v8.5.0 by clicking on other downloads under the 8.6.0 Current download button.
@@ -24,6 +30,13 @@
 * Lastly do ```sudo apt-get install -y build-essential``` if you need build tools.
 
 #### For installing on other linux distrubtions please go [here](https://nodejs.org/en/download/package-manager/)
+
+</details>
+
+
+<details>
+<summary>Installing Yarn (skip if you already have it)</summary>
+
 ### Installing Yarn on macOS
 * First setup Homebrew by visting [here](https://brew.sh)
 * Run ```brew install yarn```
@@ -54,18 +67,27 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 * Then you can do ```sudo yum install yarn``` or ```sudo dnf install yarn```
 
 #### For other distrubtions please see the yarn installation instructions [here](https://yarnpkg.com/lang/en/docs/install/#linux-tab)
+</details>
+
 
 ## Development
+>Run `yarn install` to install dependancies required for the following
 
-### iOS
+### Server
+1. Make sure your dependancies are installed
+2. `yarn run server`
+3. the server should now be up and running
+### Mobile
+
+#### iOS
 **Only supported on macOs**
 
 You must have Xcode Installed, this can be found in the mac app store
 
-#### `yarn run ios`
+##### `yarn run ios`
 This command starts the local ios simulator and starts the react packager
 
-#### Developing on your iPhone
+##### Developing on your iPhone
 * run `yarn start` to start the packager
 * Open `/ios/PatriotChat.xcodeproj` in Xcode
 * Connect your IOS device
@@ -74,17 +96,17 @@ This command starts the local ios simulator and starts the react packager
 * Wait for the app to build and install onto your iPhone
 * You are ready to develop!
 
-### Android
+#### Android
 **Requires further setup**
 
 Install the android SDK [here](http://www.androidauthority.com/how-to-install-android-sdk-software-development-kit-21137/)
 
-#### Developing on your Android
+##### Developing on your Android
 
 You must have usb debugging enabled, [here is how](https://www.kingoapp.com/root-tutorials/how-to-enable-usb-debugging-mode-on-android.htm)
 
 running `adb devices` will show all connected android devices and will show if your device is showing up on your computer
 
-#### `yarn run android`
+##### `yarn run android`
 This command will push the app to any connected android device and will start the react packager
 
