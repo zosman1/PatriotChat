@@ -29,7 +29,7 @@
 * Then ```sudo apt-get install -y nodejs```
 * Lastly do ```sudo apt-get install -y build-essential``` if you need build tools.
 
-#### For installing on other linux distrubtions please go [here](https://nodejs.org/en/download/package-manager/)
+#### For installing on other linux distributions please go [here](https://nodejs.org/en/download/package-manager/)
 
 </details>
 
@@ -38,7 +38,7 @@
 <summary>Installing Yarn (skip if you already have it)</summary>
 
 ### Installing Yarn on macOS
-* First setup Homebrew by visting [here](https://brew.sh)
+* First setup Homebrew by visiting [here](https://brew.sh)
 * Run ```brew install yarn```
 * If you already have nvm/node.js then do ```brew install yarn --without-node```
 
@@ -66,7 +66,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 * First do ```sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo```
 * Then you can do ```sudo yum install yarn``` or ```sudo dnf install yarn```
 
-#### For other distrubtions please see the yarn installation instructions [here](https://yarnpkg.com/lang/en/docs/install/#linux-tab)
+#### For other distributions please see the yarn installation instructions [here](https://yarnpkg.com/lang/en/docs/install/#linux-tab)
 </details>
 
 
@@ -74,7 +74,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 >Run `yarn install` to install dependancies required for the following
 
 ### Server
-1. Make sure your dependancies are installed
+1. Make sure your dependencies are installed
 2. `yarn run server`
 3. the server should now be up and running
 ### Mobile
